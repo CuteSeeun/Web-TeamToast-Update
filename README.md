@@ -28,10 +28,18 @@
 - **배포** 
 - **리팩토링** 
 
-
-## 역할 소개
+## 팀원 소개
+- **[김정연](https://github.com/lakelover0611)** : 기획 담당  /  팀목록page, 결제/구독page
+- **[김현진](https://github.com/0515khj)** : 퍼블리싱 담당  /  인트로page, 로그인/회원가입page, 스페이스page, 프로필page
+- **[조하영](https://github.com/bigbro5232)** : ERD 담당  /  백로그page, 이슈 상세page
 - **[최세은](https://github.com/CuteSeeun)** : 퍼블리싱 담당  /  활성스프린트page, 대시보드page, 이슈목록page, 타임라인page, 채팅page
+- **[한채경](https://github.com/gch2505)** : 디자인 담당  /  프로젝트page, 이슈 생성 modal
+  
 
+## 리팩토링된 기능 (배포 버전)
+- **[최세은](https://github.com/CuteSeeun)**  
+    - ~~
+    - !!
 
 
 ## 개발 환경
