@@ -1,7 +1,7 @@
 ## 업무관리 협업 툴 서비스
 <img src="https://github.com/CuteSeeun/Web-TeamToast/blob/main/cover.png" alt="홈 화면 예시" width="600" />
 
-- 배포 레파지토리 : 
+- 배포 링크 : 
 
 
 ## 프로젝트 소개
