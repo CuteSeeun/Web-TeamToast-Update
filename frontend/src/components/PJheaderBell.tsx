@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { notificationsAtom } from '../recoil/atoms/notificationsAtom';
 import { userState } from '../recoil/atoms/userAtoms';
-
+import axiosInstance from '../api';
 
 
 const PJheaderBell = () => {
@@ -28,7 +28,7 @@ const PJheaderBell = () => {
         }
 
         try {
-          const response = await axios.get('http://localhost:3001/alarm/notifications',{
+          const response = await axiosInstance.get('alarm/notifications',{
             params:{userEmail : user?.email},
           });
           setNotifications(response.data);
@@ -55,7 +55,7 @@ const PJheaderBell = () => {
 
         try {
           // 서버에 알림 읽음 상태 업데이트
-          await axios.post('http://localhost:3001/alarm/markAsRead',{issueId});
+          await axiosInstance.post('alarm/markAsRead',{issueId});
           //읽은 알림 삭제
           setNotifications((prev)=>prev.filter((n)=>n.issue_id !== issueId));
           sessionStorage.setItem('pid',projectId.toString());

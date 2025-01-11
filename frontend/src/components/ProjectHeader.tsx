@@ -8,7 +8,7 @@ import { Link, useNavigate, useParams, useLocation } from 'react-router-dom';
 import { ReactComponent as LogoIcon } from '../assets/icons/Logo.svg'; // icons 폴더에서 로고 가져옴
 import { IoSettingsOutline } from "react-icons/io5";
 import PJheaderBell from './PJheaderBell';
-import axios from 'axios';
+import axiosInstance from '../api';
 import { teamMembersState } from '../recoil/atoms/memberAtoms';
 import { notificationsAtom } from '../recoil/atoms/notificationsAtom';
 import styled from 'styled-components';
@@ -174,7 +174,7 @@ const ProjectHeader = ({
                 return;
             }
             try {
-                const response = await axios.get("http://localhost:3001/team/members", {
+                const response = await axiosInstance.get("team/members", {
                     params: { spaceId: sid },
                 });
                 setTeamMembers(response.data); // 팀 멤버 상태 갱신
@@ -228,7 +228,7 @@ const ProjectHeader = ({
 
         const fetchNotification = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/alarm/notifications', {
+                const response = await axiosInstance.get('alarm/notifications', {
                     params: { userEmail: user?.email },
                 });
                 await setAlarmOnOff(response.data); // 상태 업데이트

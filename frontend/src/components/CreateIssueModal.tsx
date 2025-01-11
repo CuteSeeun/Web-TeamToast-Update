@@ -400,6 +400,7 @@ import { teamMembersState } from '../recoil/atoms/memberAtoms';
 import axios from 'axios';
 import { notificationsAtom } from "../recoil/atoms/notificationsAtom";
 import noImagePath from '../assets/images/noImage.png';
+import axiosInstance from "../api";
 
 interface IssueModalProps {
   isOpen: boolean;
@@ -534,8 +535,8 @@ export const CreateIssueModal = (props: IssueModalProps): JSX.Element | null => 
 
       // 파일 업로드 처리
       if (selectedFiles.length > 0) {
-        const response = await axios.post(
-          'http://localhost:3001/upload/upload', formData,
+        const response = await axiosInstance.post(
+          'upload/upload', formData,
           { headers: { 'Content-Type': 'multipart/form-data' } }
         );
 
@@ -578,7 +579,7 @@ export const CreateIssueModal = (props: IssueModalProps): JSX.Element | null => 
       
 
       // Issue 데이터 전송
-      const issueResponse = await axios.post(`http://localhost:3001/issues/new/${pid}`, updatedIssue);
+      const issueResponse = await axiosInstance.post(`issues/new/${pid}`, updatedIssue);
       const newIssue: Issue = issueResponse.data;
 
 
