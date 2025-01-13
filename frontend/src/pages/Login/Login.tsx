@@ -3,7 +3,7 @@ import { LoginWrap } from '../../components/NavStyle';
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import axiosInstance from '../../api';
 
 const Login:React.FC = () => {
@@ -34,7 +34,7 @@ const Login:React.FC = () => {
         
         try {
             console.log('Attempting login with:', { useremail, userpw });
-            const response= await axiosInstance.post('/editUser/loginUser',{
+            const response= await axiosInstance.post('editUser/loginUser',{
                 useremail,
                 userpw
             },{
@@ -71,7 +71,7 @@ const Login:React.FC = () => {
     const getKakao = async() =>{
         try {
             // const response = await axios.get('http://localhost:3001/editUser/kakao-login');
-            const response = await axios.get('/editUser/kakao-login');
+            const response = await axiosInstance.get('/editUser/kakao-login');
             const {redirectUrl} = response.data;
             window.location.href = redirectUrl;
         } catch (error) {
