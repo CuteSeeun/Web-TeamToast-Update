@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import axiosInstance from '../../api';
 import { useRecoilState, useRecoilValue } from 'recoil'; // Recoil 훅 가져오기
 import { userState } from '../../recoil/atoms/userAtoms'; // Recoil atom 가져오기
 import { channelAtom } from '../../recoil/atoms/channelAtoms';
@@ -51,7 +52,7 @@ const ChannelList: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
       joinRoom(channel.rid);
 
       // 선택된 채널의 메시지 가져오기
-      const response = await axios.get('http://localhost:3001/messages', {
+      const response = await axiosInstance.get('/messages', {
         params: { rid: channel.rid },
       });
 
@@ -84,7 +85,7 @@ const ChannelList: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
         console.log('Request params:', { email: user.email });
         // console.log('해당 스페이스:', space.Id);
 
-        const response = await axios.get('http://localhost:3001/channel', {
+        const response = await axiosInstance.get('/channel', {
           params: { email: user.email, space_id:61 }, // 이메일을 쿼리로 전달
         });
         

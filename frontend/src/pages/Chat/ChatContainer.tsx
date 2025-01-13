@@ -13,6 +13,7 @@ import { sendMessage, onMessage, offMessage } from '../../socketClient'; // 소�
 import ExitModal from './ExitModal';
 import AddFriendModal from './AddFriendModal'; // AddFriendModal 가져오기
 import axios, { AxiosError } from 'axios';
+import axiosInstance from '../../api';
 import { showNotification } from '../../socketClient';
 
 

@@ -1,6 +1,7 @@
 import React from "react";
 import * as Styled from "./teamStyle";
 import axios from "axios";
+import axiosInstance from "../../api";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   teamMembersState,
@@ -57,7 +58,7 @@ const TeamList: React.FC<TeamListProps> = ({
 
         // 기존 최고관리자의 역할을 "manager"로 변경
         if (currentTopManager && currentTopManager.email !== email) {
-          await axios.put("http://localhost:3001/team/update-role", {
+          await axiosInstance.put("/team/update-role", {
             email: currentTopManager.email,
             role: "manager",
             spaceId,
@@ -80,7 +81,7 @@ const TeamList: React.FC<TeamListProps> = ({
       }
 
       // 새로운 최고관리자 설정
-      await axios.put("http://localhost:3001/team/update-role", {
+      await axiosInstance.put("/team/update-role", {
         email,
         role: newRole,
         spaceId,
@@ -108,7 +109,7 @@ const TeamList: React.FC<TeamListProps> = ({
   };
   const handleDeleteMember = async (email: string) => {
     try {
-      await axios.delete("http://localhost:3001/team/remove", {
+      await axiosInstance.delete("/team/remove", {
         data: { email, spaceId },
       });
       const updatedMembers = teamMembers.filter(

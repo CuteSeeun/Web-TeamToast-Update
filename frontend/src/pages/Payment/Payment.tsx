@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import axiosInstance from "../../api";
 import { PaymentWrap } from "./priceStyle";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../recoil/atoms/userAtoms"; // Recoil 상태 가져오기
@@ -37,10 +38,10 @@ const Payment: React.FC = () => {
       try {
         // Promise.all로 사용자 정보 및 구독 정보 동시 호출
         const [userResponse, subscriptionResponse] = await Promise.all([
-          axios.get("http://localhost:3001/subscription/user/details", {
+          axiosInstance.get("/subscription/user/details", {
             params: { userEmail, spaceId },
           }),
-          axios.get("http://localhost:3001/subscription/details", {
+          axiosInstance.get("/subscription/details", {
             params: { userEmail, spaceId },
           }),
         ]);
@@ -87,8 +88,8 @@ const Payment: React.FC = () => {
       return;
     }
     try {
-      const response = await axios.get(
-        "http://localhost:3001/subscription/check-admin",
+      const response = await axiosInstance.get(
+        "/subscription/check-admin",
         {
           params: { userEmail: user.email, spaceId },
         }
@@ -132,8 +133,8 @@ const Payment: React.FC = () => {
       if (!spaceId || !user?.email)
         throw new Error("spaceId가 유효하지 않습니다.");
 
-      const response = await axios.post(
-        "http://localhost:3001/subscription/change-to-free",
+      const response = await axiosInstance.post(
+        "/subscription/change-to-free",
         { spaceId }
       );
       alert(response.data.message);
@@ -210,7 +211,7 @@ const Payment: React.FC = () => {
 
       if (selectedPlan === "team" && cardInfo) {
         // 유료 -> 유료 변경 (결제 없이 업데이트만)
-        await axios.post("http://localhost:3001/subscription/updatedLimit", {
+        await axiosInstance.post("/subscription/updatedLimit", {
           spaceId,
           additionalMembers,
           customerKey: user?.email,

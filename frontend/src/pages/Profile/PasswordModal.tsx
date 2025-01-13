@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { PasswordModalWrap } from './profileStyle';
-import axios from 'axios';
 import AccessToken from '../Login/AccessToken';
 
 interface PasswordChangeModalProps {

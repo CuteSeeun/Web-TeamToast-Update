@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
+import axiosInstance from "../../api";
 import { UpgradeSuccessWrap } from "./priceStyle"; // 성공/실패 공용 스타일 사용
 
 const CardChangeSuccess: React.FC = () => {
@@ -27,8 +28,8 @@ const CardChangeSuccess: React.FC = () => {
     setIsLoading(true);
     setErrorMessage("");
     try {
-      const response = await axios.post(
-        "http://localhost:3001/billing/card-update",
+      const response = await axiosInstance.post(
+        "/billing/card-update",
         {
           customerKey, // 고객 고유 키
           authKey, // Toss Payments에서 반환된 인증 키

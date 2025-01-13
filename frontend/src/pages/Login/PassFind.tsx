@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import PassFindModal from './PassFindModal';
 import { PassFindWrap } from '../../components/NavStyle';
 import axios from 'axios';
+import axiosInstance from '../../api';
 
 const PassFind = () => {
 
@@ -29,7 +30,7 @@ const PassFind = () => {
 
     try {
         // 서버로 유효성 검사 요청
-        const response = await axios.post('http://localhost:3001/editUser/vaildaeUser', {
+        const response = await axiosInstance.post('/editUser/vaildaeUser', {
             uname :username,
             email :useremail,
         });
@@ -56,7 +57,7 @@ const handlePasswordChange = async (newPassword: string) => {
         formData.append('newPassword', newPassword);
 
         // API 호출하여 비밀번호 변경
-        const response = await axios.post('http://localhost:3001/editUser/findPass', {
+        const response = await axiosInstance.post('/editUser/findPass', {
             uname: username,  // 키 이름 변경
             email: useremail, // 키 이름 변경
             newpw: newPassword 

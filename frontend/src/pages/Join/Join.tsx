@@ -2,6 +2,7 @@ import React, { useState } from 'react';  // useEffect 추가
 import { JoinWrap } from '../../components/NavStyle';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import axiosInstance from '../../api';
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 
@@ -70,7 +71,7 @@ const Join: React.FC = () => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:3001/editUser/checkPhone',{
+            const response = await axiosInstance.post('/editUser/checkPhone',{
                 tel:data.tel
             })
             if(response.data.isAvailable){
@@ -95,7 +96,7 @@ const Join: React.FC = () => {
     const sendCode = async()=>{
         try {
             setPloading(true);
-            const response = await axios.post('http://localhost:3001/editUser/auth/sendverification',{
+            const response = await axiosInstance.post('/editUser/auth/sendverification',{
                 phoneNumber : data.tel
             })
             setPhoneMessage(response.data.message);
@@ -112,7 +113,7 @@ const Join: React.FC = () => {
     const VerifyCode = async()=>{
         try {
             setPloading(true);
-            const response = await axios.post('http://localhost:3001/editUser/auth/verifyPhone',{
+            const response = await axiosInstance.post('/editUser/auth/verifyPhone',{
                 phoneNumber : data.tel,
                 code : verificationCode
             });
@@ -134,7 +135,7 @@ const Join: React.FC = () => {
         }
         try {
             setEloading(true);
-            const response = await axios.post('http://localhost:3001/editUser/checkEmail',{
+            const response = await axiosInstance.post('/editUser/checkEmail',{
                 email : data.email
             });
             if(response.data.isAvailable){
@@ -183,7 +184,7 @@ const Join: React.FC = () => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:3001/editUser/saveUser', {
+            const response = await axiosInstance.post('/editUser/saveUser', {
                 name: data.name,
                 email: data.email,
                 tel: data.tel,
@@ -202,7 +203,7 @@ const Join: React.FC = () => {
     // 서버에 카카오 로그인 url 받아오고 리다이렉트
     const kakaoLogin = async()=>{
         try {
-            const response = await axios.get('http://localhost:3001/editUser/kakao-login');
+            const response = await axiosInstance.get('/editUser/kakao-login');
             window.location.href = response.data.redirectUrl;
         } catch (error) {
             console.error('카카오 로그인 연결 실패 : ',error);

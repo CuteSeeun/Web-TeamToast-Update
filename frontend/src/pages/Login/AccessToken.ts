@@ -1,4 +1,5 @@
 import axios from "axios";
+import axiosInstance from "../../api";
 import { jwtDecode } from "jwt-decode";
 
 interface JwtPayload {
@@ -8,9 +9,9 @@ interface JwtPayload {
 
 
 // 리프레시용 별도 인스턴스
-const refreshAxios = axios.create({
-    baseURL: 'http://localhost:3001',
-});
+// const refreshAxios = axios.create({
+//     baseURL: 'http://localhost:3001',
+// });
 
 const AccessToken = axios.create({ // axios 이스턴스 생성
     baseURL: 'http://localhost:3001', // baseURL = api요청의 기본 경로 설정
@@ -20,7 +21,7 @@ const AccessToken = axios.create({ // axios 이스턴스 생성
 let isRefreshing = false;
 
 
-AccessToken.interceptors.request.use(
+axiosInstance.interceptors.request.use(
     async(config)=>{
         let accessToken = localStorage.getItem('accessToken');
 
@@ -41,7 +42,7 @@ AccessToken.interceptors.request.use(
 
                 console.log("Attempting to refresh token...");
                 try {
-                    const response = await refreshAxios.post("/editUser/refresh/token",{uid}
+                    const response = await axiosInstance.post("/editUser/refresh/token",{uid}
                       
                     );
                     console.log("Token refresh response:", response.data);
@@ -71,7 +72,7 @@ AccessToken.interceptors.request.use(
 );
 
 // Response 인터셉터 추가
-AccessToken.interceptors.response.use(
+axiosInstance.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config;
@@ -85,14 +86,14 @@ AccessToken.interceptors.response.use(
                 if (!accessToken) throw new Error('No access token');
 
                 const { uid } = jwtDecode<JwtPayload>(accessToken);
-                const refreshResponse = await refreshAxios.post("/editUser/refresh/token", { uid });
+                const refreshResponse = await axiosInstance.post("/editUser/refresh/token", { uid });
                 
                 const { accessToken: newAccessToken } = refreshResponse.data;
                 if (newAccessToken) {
                     localStorage.setItem("accessToken", newAccessToken);
-                    AccessToken.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
+                    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
                     originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-                    return AccessToken(originalRequest);  // 원래 요청 재시도
+                    return axiosInstance(originalRequest);  // 원래 요청 재시도
                 }
             } catch (refreshError) {
                 console.error("토큰 갱신 실패:", refreshError);

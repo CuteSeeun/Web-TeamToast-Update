@@ -3,7 +3,6 @@ import { ProfileWrap } from './profileStyle';
 import PasswordModal from './PasswordModal';
 import {useRecoilValue, useSetRecoilState } from 'recoil';
 import { userState } from '../../recoil/atoms/userAtoms';
-import axios from 'axios';
 import AccessToken from '../Login/AccessToken';
 
 interface FormData {

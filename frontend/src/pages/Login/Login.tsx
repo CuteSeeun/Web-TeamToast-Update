@@ -4,6 +4,7 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import axiosInstance from '../../api';
 
 const Login:React.FC = () => {
     const [useremail , setUseremail] = useState<string>('');
@@ -33,7 +34,7 @@ const Login:React.FC = () => {
         
         try {
             console.log('Attempting login with:', { useremail, userpw });
-            const response= await axios.post('http://localhost:3001/editUser/loginUser',{
+            const response= await axiosInstance.post('/editUser/loginUser',{
                 useremail,
                 userpw
             },{

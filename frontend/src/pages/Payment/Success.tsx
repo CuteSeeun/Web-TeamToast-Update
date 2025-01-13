@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
+import axiosInstance from "../../api";
 import { UpgradeSuccessWrap } from "./priceStyle";
 
 const Success: React.FC = () => {
@@ -41,8 +42,8 @@ const Success: React.FC = () => {
         }
 
         // 결제 정보 서버로 전송
-        const billingResponse = await axios.post(
-          "http://localhost:3001/billing/complete",
+        const billingResponse = await axiosInstance.post(
+          "/billing/complete",
           {
             customerKey,
             authKey,
@@ -55,8 +56,8 @@ const Success: React.FC = () => {
         console.log("Billing 성공:", billingResponse.data);
 
         // 요금제 변경 API 호출
-        const upgradeResponse = await axios.post(
-          "http://localhost:3001/subscription/change-to-paid",
+        const upgradeResponse = await axiosInstance.post(
+          "/subscription/change-to-paid",
           {
             spaceId: parseInt(spaceId),
             userEmail: customerKey,

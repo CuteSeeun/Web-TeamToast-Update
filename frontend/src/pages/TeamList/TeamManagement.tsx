@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import axiosInstance from "../../api";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   teamMembersState,
@@ -21,7 +22,7 @@ const TeamManagement: React.FC = () => {
   // 팀 멤버 목록 가져오기
   const fetchTeamMembers = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:3001/team/members", {
+      const response = await axiosInstance.get("/team/members", {
         params: { spaceId },
       });
       setTeamMembers(response.data);
@@ -47,7 +48,7 @@ const TeamManagement: React.FC = () => {
       return;
     }
     try {
-      await axios.post("http://localhost:3001/team/invite", {
+      await axiosInstance.post("/team/invite", {
         space_id: Number(spaceId),
         email,
         role,
