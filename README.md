@@ -1,7 +1,7 @@
 ## 업무관리 협업 툴 서비스
-<img src="https://github.com/CuteSeeun/Web-TeamToast/blob/main/cover.png" alt="홈 화면 예시" width="600" />
+<img src="https://github.com/CuteSeeun/Web-TeamToast/blob/main/cover.png" alt="홈 화면 예시" width="400" />
 
-- 배포 링크 : 
+- 배포 링크 : https://team-toast-fe.vercel.app
 
 
 ## 프로젝트 소개
