@@ -16,7 +16,7 @@
   <rect x="3" y="7" width="13" height="10" rx="2" ry="2"></rect>
   <polygon points="16 7 22 11 22 13 16 17 16 7"></polygon>
 </svg>
-    TeamToast.mp4  :  이미지를 클릭해서 영상을 시청하세요 
+    TeamToast.mp4  :  이미지 클릭 → 영상 시청 
   </summary>
 
   [![유튜브 미리보기 이미지](https://img.youtube.com/vi/4sR4FVVXjDQ/0.jpg)](https://www.youtube.com/watch?v=4sR4FVVXjDQ)
@@ -24,21 +24,14 @@
 
 
 ## 배포 및 리팩토링 기간
-- 2025.00.00 ~ 2025.00.00  
-**배포**  
-**리팩토링**  
+- 2025.01.14 ~ 2025.01.31  
 
-## 팀원 소개
-- **[김정연](https://github.com/lakelover0611)** : 기획 담당  /  팀목록page, 결제/구독page
-- **[김현진](https://github.com/0515khj)** : 퍼블리싱 담당  /  인트로page, 로그인/회원가입page, 스페이스page, 프로필page
-- **[조하영](https://github.com/bigbro5232)** : ERD 담당  /  백로그page, 이슈 상세page
-- **[최세은](https://github.com/CuteSeeun)** : 퍼블리싱 담당  /  활성스프린트page, 대시보드page, 이슈목록page, 타임라인page, 채팅page
-- **[한채경](https://github.com/gch2505)** : 디자인 담당  /  프로젝트page, 이슈 생성 modal
+## 리패토링 전 버전 레파지토리
+https://github.com/CuteSeeun/Web-TeamToast  
   
-
 ## 리팩토링된 기능 (배포 버전)
 - **[최세은](https://github.com/CuteSeeun)**  
-    - **소셜 로그인** : 
+    - **소셜 로그인 / 로그인 / 회원가입** : 
     - **칸반 보드** : 
 
 
