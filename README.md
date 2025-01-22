@@ -26,26 +26,17 @@
 ## 배포 및 리팩토링 기간
 - 2025.01.14 ~ 2025.01.31  
 
-
-  
-## 리패토링 전 버전 레파지토리
+## 이전 버전 (리팩토링 전)
 https://github.com/CuteSeeun/Web-TeamToast  
-
-
-  
-## 리팩토링된 기능 (배포 버전)
-- **[최세은](https://github.com/CuteSeeun)**  
-    - **소셜 로그인 / 로그인 / 회원가입** : 
-    - **칸반 보드** : 
-
-
-  
 
 ## 개발 환경
 - **Front-end** : React, TypeScript, Recoil, Styled-components
 - **Back-end** : Node.js, Express.js
 - **Database** : MySQL
-- **배포** : 프론트-Vercel, 백엔드-AWS
+- **배포**  
+  프론트 : Vercel  
+  백엔드 : AWS  
+  CI/CD : Github Actions  
 
 
 ## 데이터베이스 설계
@@ -54,6 +45,7 @@ https://github.com/CuteSeeun/Web-TeamToast
 <img src="https://github.com/CuteSeeun/Web-TeamToast/blob/main/table.png" alt="홈 화면 예시" width="900" />
 
 ## 페이지별 주요 기능
+- **[최세은](https://github.com/CuteSeeun)**  
 - **로그인/회원가입** : coolSMS 사용해 인증코드 발송, JWT 토큰 사용
 - **기본 CRUD** : 스페이스, 프로젝트, 스프린트, 이슈, 댓글, 채팅 채널, 팀원 생성/수정/삭제
 - **결제** : 10명 이상 시 구독 결제 → 토스 연동
