@@ -45,7 +45,7 @@ https://github.com/CuteSeeun/Web-TeamToast
 <img src="https://github.com/CuteSeeun/Web-TeamToast/blob/main/table.png" alt="홈 화면 예시" width="900" />
 
 ## 페이지별 주요 기능
-- **[최세은](https://github.com/CuteSeeun)**  
+**개발 인원** : [최세은](https://github.com/CuteSeeun)  
 - **로그인/회원가입** : coolSMS 사용해 인증코드 발송, JWT 토큰 사용
 - **기본 CRUD** : 스페이스, 프로젝트, 스프린트, 이슈, 댓글, 채팅 채널, 팀원 생성/수정/삭제
 - **결제** : 10명 이상 시 구독 결제 → 토스 연동
